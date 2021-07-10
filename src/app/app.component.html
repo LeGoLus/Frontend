@@ -1,0 +1,53 @@
+<div id="app">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">DMS System</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="home">Home </a>
+      </li>
+      <li class="nav-item" *ngIf="showManagerBoard">
+        <a href="/manager" class="nav-link" routerLink="manager">Manager Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showSaleBoard">
+        <a href="/sale" class="nav-link" routerLink="sale">Sale Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showTechnicianBoard">
+        <a href="/technician" class="nav-link" routerLink="technician">Technician Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showServiceBoard">
+        <a href="/service" class="nav-link" *ngIf="isLoggedIn" routerLink="service">Service</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <!-- <li class="nav-item">
+        <a href="/createproject" class="nav-link" routerLink="createproject">Create Project</a>
+      </li> -->
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href="/setting/" class="nav-link" routerLink="setting">Setting</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
